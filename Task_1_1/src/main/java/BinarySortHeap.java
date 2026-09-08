@@ -1,6 +1,3 @@
-import com.sun.jdi.Value;
-
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -23,19 +20,19 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
 
 
     /**
-     * Constructor for filling an unsorted array
+     * Constructor for filling an unsorted array.
      * @param notSortesArray unsorted data
      */
     public BinarySortHeap(T[] notSortesArray) {
         values = new ArrayList<>();
         values.add(null);
         for (T item : notSortesArray) {
-            AddItem(item);
+            addItem(item);
         }
     }
 
     /**
-     * Returning count elements in heap
+     * Returning count elements in heap.
      * @return count elements in heap
      */
     public int size() {
@@ -43,10 +40,10 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
     }
 
     /**
-     * Add new element in heap
+     * Add new element in heap.
      * @param item The element being added
      */
-    public void AddItem(T item) {
+    public void addItem(T item) {
         values.add(item);
         for (int i = values.size() - 1; i/2 != 0; i /= 2) {
             if (values.get(i).compareTo(values.get(i/2)) < 0) {
@@ -59,10 +56,10 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
     }
 
     /**
-     * Returning minimal element and remove it from heap
+     * Returning minimal element and remove it from heap.
      * @return Minimal element in heap
      */
-    public T PopSmallestItem() {
+    public T popSmallestItem() {
         if (values.size() == 1) {
             return null;
         }
@@ -74,10 +71,10 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
     }
 
     /**
-     * Return clone private heap's array (method for test)
+     * Return clone private heap's array (method for test).
      * @return clone private heap's array
      */
-    public ArrayList<T> GetResultArray() {
+    public ArrayList<T> getResultArray() {
         return new ArrayList<T>(values);
     }
 
