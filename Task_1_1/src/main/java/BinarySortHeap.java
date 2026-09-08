@@ -6,7 +6,7 @@ import java.util.Collections;
 
 
 /**
- * Data struct implement API Binary Sort Heap for Heapsort
+ * Data struct implement API Binary Sort Heap for Heapsort.
  * @param <T> Data type of the input unsorted array
  */
 public class BinarySortHeap<T extends Comparable<? super T>> {
@@ -14,7 +14,7 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
     private ArrayList<T> values;
 
     /**
-     * Default constructor for creating empty heap
+     * Default constructor for creating empty heap.
      */
     public BinarySortHeap() {
         values  = new ArrayList<>();
