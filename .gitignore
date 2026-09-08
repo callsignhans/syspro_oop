@@ -1,0 +1,18 @@
+# === IntelliJ IDEA для всех подпапок ===
+**/.idea/
+**/*.iml
+**/*.ipr
+**/*.iws
+**/out/
+
+# === Скомпилированный Java-код ===
+**/*.class
+
+# === Gradle (для всех подпроектов) ===
+**/.gradle/
+**/build/
+!**/gradle-wrapper.jar
+
+# === Логи ===
+**/*.log
+
