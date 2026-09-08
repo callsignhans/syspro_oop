@@ -23,7 +23,7 @@ class BinarySortHeapTest {
     }
 
     @Test
-    void ConstructorDefault() {
+    void constructorDefault() {
         BinarySortHeap<Integer> test = new BinarySortHeap<>();
         Assertions.assertTrue(checkCorrectHeap(test.getResultArray()));
     }
@@ -65,16 +65,16 @@ class BinarySortHeapTest {
     }
 
     @Test
-    void ConstructorArrayDecreasingSequence() {
-        Integer[] inputArray = new Integer[]{6,5,4,3,2,1};
+    void constructorArrayDecreasingSequence() {
+        Integer[] inputArray = new Integer[]{6, 5, 4, 3, 2, 1};
         BinarySortHeap<Integer> test = new BinarySortHeap<>(inputArray);
         Assertions.assertTrue(checkCorrectHeap(test.getResultArray()));
 
     }
 
     @Test
-    void ConstructorArrayAscendingSequence() {
-        Integer[] inputArray = new Integer[]{1,2,3,4,5,6};
+    void constructorArrayAscendingSequence() {
+        Integer[] inputArray = new Integer[]{1, 2, 3, 4, 5, 6};
         BinarySortHeap<Integer> test = new BinarySortHeap<>(inputArray);
         Assertions.assertTrue(checkCorrectHeap(test.getResultArray()));
 
@@ -82,7 +82,7 @@ class BinarySortHeapTest {
 
     @Test
     void removeItem1() {
-        Integer[] inputArray = new Integer[]{1,2,3,4,5,6};
+        Integer[] inputArray = new Integer[]{1, 2, 3, 4, 5, 6};
         BinarySortHeap<Integer> test = new BinarySortHeap<>(inputArray);
         Integer ans = test.popSmallestItem();
         Assertions.assertEquals(1, ans);
@@ -93,7 +93,7 @@ class BinarySortHeapTest {
 
     @Test
     void removeItem2() {
-        Integer[] inputArray = new Integer[]{1,2,3,4,5,6};
+        Integer[] inputArray = new Integer[]{1, 2, 3, 4, 5, 6};
         BinarySortHeap<Integer> test = new BinarySortHeap<>(inputArray);
         for (int i = 1; i < 7; i++) {
             Integer ans = test.popSmallestItem();
