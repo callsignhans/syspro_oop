@@ -45,11 +45,10 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
      */
     public void addItem(T item) {
         values.add(item);
-        for (int i = values.size() - 1; i/2 != 0; i /= 2) {
-            if (values.get(i).compareTo(values.get(i/2)) < 0) {
-                Collections.swap(values, i, i/2);
-            }
-            else {
+        for (int i = values.size() - 1; i / 2 != 0; i /= 2) {
+            if (values.get(i).compareTo(values.get(i / 2)) < 0) {
+                Collections.swap(values, i, i / 2);
+            } else {
                 break;
             }
         }
@@ -66,7 +65,7 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
         T result = values.get(1);
         values.set(1, values.getLast());
         values.removeLast();
-        ShiftDown(1);
+        shiftDown(1);
         return result;
     }
 
@@ -78,19 +77,18 @@ public class BinarySortHeap<T extends Comparable<? super T>> {
         return new ArrayList<T>(values);
     }
 
-    private void ShiftDown(int indexItem) {
+    private void shiftDown(int indexItem) {
         while (true) {
-            if (indexItem * 2 + 1 < values.size() &&
-                    (values.get(indexItem * 2).compareTo(values.get(indexItem * 2 + 1)) > 0) &&
-                    (values.get(indexItem).compareTo(values.get(indexItem * 2 + 1)) > 0)) {
+            if (indexItem * 2 + 1 < values.size()
+                    && (values.get(indexItem * 2).compareTo(values.get(indexItem * 2 + 1)) > 0)
+                    && (values.get(indexItem).compareTo(values.get(indexItem * 2 + 1)) > 0)) {
                 Collections.swap(values, indexItem, indexItem * 2 + 1);
                 indexItem = indexItem * 2 + 1;
-            } else if (indexItem * 2 < values.size() &&
-                    (values.get(indexItem).compareTo(values.get(indexItem * 2)) > 0)) {
+            } else if (indexItem * 2 < values.size()
+                    && (values.get(indexItem).compareTo(values.get(indexItem * 2)) > 0)) {
                 Collections.swap(values, indexItem, indexItem * 2);
                 indexItem *= 2;
-            }
-             else {
+            } else {
                 break;
             }
         }
