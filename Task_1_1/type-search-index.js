@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"BinarySortHeap"},{"p":"<Unnamed>","l":"HeapSort"},{"p":"org.example","l":"Main"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"BinarySortHeap"},{"p":"<Unnamed>","l":"HeapSort"},{"p":"<Unnamed>","l":"Main"}];updateSearchResults();
