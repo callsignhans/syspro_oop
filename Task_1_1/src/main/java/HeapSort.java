@@ -11,7 +11,7 @@ public class  HeapSort {
      * @return Sorted array
      * @param <T> Type elements in array
      */
-    public static <T extends Comparable<? super T>> ArrayList<T> HeapSortCall(T[] notSortArray) {
+    public static <T extends Comparable<? super T>> ArrayList<T> heapSortCall(T[] notSortArray) {
         var heap = new BinarySortHeap<>(notSortArray);
         var result = new ArrayList<T>();
         while (heap.size() != 0) {

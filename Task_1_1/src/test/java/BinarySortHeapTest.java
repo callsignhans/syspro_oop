@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySortHeapTest {
 
-    private static <T extends Comparable<? super T>> boolean checkCorrectHeap(ArrayList<T> arrayList){
+    private static <T extends Comparable<? super T>> boolean checkCorrectHeap(ArrayList<T> arrayList) {
         if (arrayList.isEmpty() && (arrayList.getFirst() != null)) {
             return false;
         }
