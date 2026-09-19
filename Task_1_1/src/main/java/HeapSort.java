@@ -7,9 +7,9 @@ public class  HeapSort {
 
     /**
      * Sorts the provided array using heapsort
+     * @param <T> Type elements in array
      * @param notSortArray Unsorted array
      * @return Sorted array
-     * @param <T> Type elements in array
      */
     public static <T extends Comparable<? super T>> ArrayList<T> heapSortCall(T[] notSortArray) {
         var heap = new BinarySortHeap<>(notSortArray);
