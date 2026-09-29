@@ -1,0 +1,50 @@
+package assessment;
+
+/**
+ * Describe base interface assessment.
+ */
+public interface Assessment {
+
+    /**
+     *  It describes impact of academic course to have diploma with honor.
+     * @return true - impact, false - don't impact
+     */
+    boolean GetImpactDiplomaHonor();
+
+    /**
+     * Grade satisfy to have diploma with honor.
+     * @return true - satisfy, false - don't satisfy
+     */
+    //boolean GetSatisfyDiplomaHonor();
+
+    /**
+     *  It satisfies of grade academic course to free model study.
+     * @return true - satisfy, false - don't satisfy
+     */
+    boolean GetSatisfyFreeStudy();
+
+    /**
+     *  It satisfies of grade academic course to raise grant.
+     * @return true - satisfy, false - don't satisfy
+     */
+    boolean GetSatisfyRaiseGrant();
+
+    /**
+     *  It satisfies of grade academic course to base grant.
+     * @return true - satisfy, false - don't satisfy
+     */
+    boolean GetSatisfyBaseGrant();
+
+    /**
+     * Return semester of grade.
+     * @return number semester
+     */
+    int GetSemester();
+
+    /**
+     * Return name of grade.
+     * @return name of grade
+     */
+    String GetName();
+
+}
