@@ -21,7 +21,7 @@ public interface Assessment {
      *  It satisfies of grade academic course to free model study.
      * @return true - satisfy, false - don't satisfy
      */
-    boolean GetSatisfyFreeStudy();
+    boolean GetSatisfyFreeEducation();
 
     /**
      *  It satisfies of grade academic course to raise grant.

@@ -16,6 +16,7 @@ public abstract class DifferentAssessment extends BaseAssessment {
             throw new IllegalArgumentException("Argument 'grade' must belong range [" + MIN_VALUE_GRADE + ";" +
                     MAX_VALUE_GRADE + "]");
         }
+        this.grade = grade;
     }
 
     public int GetGrade() {

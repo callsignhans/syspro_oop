@@ -15,7 +15,7 @@ public class BinaryAssessment extends BaseAssessment {
     }
 
     @Override
-    public boolean GetSatisfyFreeStudy() {
+    public boolean GetSatisfyFreeEducation() {
         return result;
     }
 

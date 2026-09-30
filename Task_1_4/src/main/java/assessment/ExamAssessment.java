@@ -7,7 +7,7 @@ public class ExamAssessment extends DifferentAssessment {
     }
 
     @Override
-    public boolean GetSatisfyFreeStudy() {
+    public boolean GetSatisfyFreeEducation() {
         return grade >= 4;
     }
 }
