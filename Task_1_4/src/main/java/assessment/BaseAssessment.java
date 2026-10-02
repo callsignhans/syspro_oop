@@ -22,12 +22,12 @@ public abstract class BaseAssessment implements Assessment {
     }
 
     @Override
-    public int GetSemester() {
+    public int getSemester() {
         return semester;
     }
 
     @Override
-    public String GetName() {
+    public String getName() {
         return name;
     }
 

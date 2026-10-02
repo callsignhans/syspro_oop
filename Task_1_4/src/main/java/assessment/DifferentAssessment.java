@@ -24,17 +24,17 @@ public abstract class DifferentAssessment extends BaseAssessment {
     }
 
     @Override
-    public boolean GetImpactDiplomaHonor() {
+    public boolean getImpactDiplomaHonor() {
         return true;
     }
 
     @Override
-    public boolean GetSatisfyRaiseGrant() {
+    public boolean getSatisfyRaiseGrant() {
         return grade == 5;
     }
 
     @Override
-    public boolean GetSatisfyBaseGrant() {
+    public boolean getSatisfyBaseGrant() {
         return grade >= 4;
     }
 }

@@ -19,8 +19,8 @@ class QualificationPaperAssessmentTest {
         void shouldCreateInstanceWithValidGrades(int validGrade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(validGrade);
 
-            Assertions.assertEquals("Квалификационная работа", assessment.GetName());
-            Assertions.assertEquals(BaseAssessment.MAX_SEMESTER, assessment.GetSemester());
+            Assertions.assertEquals("Квалификационная работа", assessment.getName());
+            Assertions.assertEquals(BaseAssessment.MAX_SEMESTER, assessment.getSemester());
             Assertions.assertEquals(validGrade, assessment.GetGrade());
         }
 
@@ -57,7 +57,7 @@ class QualificationPaperAssessmentTest {
         @DisplayName("GetSatisfyFreeEducation всегда возвращает false независимо от оценки")
         void getSatisfyFreeEducation_ShouldAlwaysReturnFalse(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
-            Assertions.assertFalse(assessment.GetSatisfyFreeEducation());
+            Assertions.assertFalse(assessment.getSatisfyFreeEducation());
         }
 
         @ParameterizedTest
@@ -65,7 +65,7 @@ class QualificationPaperAssessmentTest {
         @DisplayName("GetSatisfyRaiseGrant всегда возвращает false (переопределено из родителя)")
         void getSatisfyRaiseGrant_ShouldAlwaysReturnFalse(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
-            Assertions.assertFalse(assessment.GetSatisfyRaiseGrant());
+            Assertions.assertFalse(assessment.getSatisfyRaiseGrant());
         }
 
         @ParameterizedTest
@@ -73,7 +73,7 @@ class QualificationPaperAssessmentTest {
         @DisplayName("GetSatisfyBaseGrant всегда возвращает false (переопределено из родителя)")
         void getSatisfyBaseGrant_ShouldAlwaysReturnFalse(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
-            Assertions.assertFalse(assessment.GetSatisfyBaseGrant());
+            Assertions.assertFalse(assessment.getSatisfyBaseGrant());
         }
 
         @ParameterizedTest
@@ -82,7 +82,7 @@ class QualificationPaperAssessmentTest {
             + " (унаследовано от DifferentAssessment)")
         void getImpactDiplomaHonor_ShouldAlwaysReturnTrue(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
-            Assertions.assertTrue(assessment.GetImpactDiplomaHonor());
+            Assertions.assertTrue(assessment.getImpactDiplomaHonor());
         }
     }
 }

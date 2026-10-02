@@ -9,42 +9,36 @@ public interface Assessment {
      *  It describes impact of academic course to have diploma with honor.
      * @return true - impact, false - don't impact
      */
-    boolean GetImpactDiplomaHonor();
-
-    /**
-     * Grade satisfy to have diploma with honor.
-     * @return true - satisfy, false - don't satisfy
-     */
-    //boolean GetSatisfyDiplomaHonor();
+    boolean getImpactDiplomaHonor();
 
     /**
      *  It satisfies of grade academic course to free model study.
      * @return true - satisfy, false - don't satisfy
      */
-    boolean GetSatisfyFreeEducation();
+    boolean getSatisfyFreeEducation();
 
     /**
      *  It satisfies of grade academic course to raise grant.
      * @return true - satisfy, false - don't satisfy
      */
-    boolean GetSatisfyRaiseGrant();
+    boolean getSatisfyRaiseGrant();
 
     /**
      *  It satisfies of grade academic course to base grant.
      * @return true - satisfy, false - don't satisfy
      */
-    boolean GetSatisfyBaseGrant();
+    boolean getSatisfyBaseGrant();
 
     /**
      * Return semester of grade.
      * @return number semester
      */
-    int GetSemester();
+    int getSemester();
 
     /**
      * Return name of grade.
      * @return name of grade
      */
-    String GetName();
+    String getName();
 
 }

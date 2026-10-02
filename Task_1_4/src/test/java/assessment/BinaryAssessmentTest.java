@@ -20,8 +20,8 @@ class BinaryAssessmentTest {
             BinaryAssessment assessment
                 = new BinaryAssessment("Физическая культура", 2, resultValue);
 
-            Assertions.assertEquals("Физическая культура", assessment.GetName());
-            Assertions.assertEquals(2, assessment.GetSemester());
+            Assertions.assertEquals("Физическая культура", assessment.getName());
+            Assertions.assertEquals(2, assessment.getSemester());
             Assertions.assertEquals(resultValue, assessment.result);
         }
 
@@ -56,9 +56,9 @@ class BinaryAssessmentTest {
             BinaryAssessment assessment
                 = new BinaryAssessment("Информатика", 1, true);
 
-            Assertions.assertTrue(assessment.GetSatisfyFreeEducation());
-            Assertions.assertTrue(assessment.GetSatisfyRaiseGrant());
-            Assertions.assertTrue(assessment.GetSatisfyBaseGrant());
+            Assertions.assertTrue(assessment.getSatisfyFreeEducation());
+            Assertions.assertTrue(assessment.getSatisfyRaiseGrant());
+            Assertions.assertTrue(assessment.getSatisfyBaseGrant());
         }
 
         @Test
@@ -67,9 +67,9 @@ class BinaryAssessmentTest {
             BinaryAssessment assessment
                 = new BinaryAssessment("Информатика", 1, false);
 
-            Assertions.assertFalse(assessment.GetSatisfyFreeEducation());
-            Assertions.assertFalse(assessment.GetSatisfyRaiseGrant());
-            Assertions.assertFalse(assessment.GetSatisfyBaseGrant());
+            Assertions.assertFalse(assessment.getSatisfyFreeEducation());
+            Assertions.assertFalse(assessment.getSatisfyRaiseGrant());
+            Assertions.assertFalse(assessment.getSatisfyBaseGrant());
         }
 
         @ParameterizedTest
@@ -79,7 +79,7 @@ class BinaryAssessmentTest {
             BinaryAssessment assessment
                 = new BinaryAssessment("Информатика", 1, resultValue);
 
-            Assertions.assertFalse(assessment.GetImpactDiplomaHonor());
+            Assertions.assertFalse(assessment.getImpactDiplomaHonor());
         }
     }
 }

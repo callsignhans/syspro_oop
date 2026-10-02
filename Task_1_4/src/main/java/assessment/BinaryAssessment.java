@@ -10,22 +10,22 @@ public class BinaryAssessment extends BaseAssessment {
     }
 
     @Override
-    public boolean GetImpactDiplomaHonor() {
+    public boolean getImpactDiplomaHonor() {
         return false;
     }
 
     @Override
-    public boolean GetSatisfyFreeEducation() {
+    public boolean getSatisfyFreeEducation() {
         return result;
     }
 
     @Override
-    public boolean GetSatisfyRaiseGrant() {
+    public boolean getSatisfyRaiseGrant() {
         return result;
     }
 
     @Override
-    public boolean GetSatisfyBaseGrant() {
+    public boolean getSatisfyBaseGrant() {
         return result;
     }
 

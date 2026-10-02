@@ -8,19 +8,19 @@ public class QualificationPaperAssessment extends DifferentAssessment {
     }
 
     @Override
-    public boolean GetSatisfyFreeEducation() {
+    public boolean getSatisfyFreeEducation() {
         return false;
         //throw new IllegalStateException("Student get grade of qualification paper on last
         // semester. Student can't ");
     }
 
     @Override
-    public boolean GetSatisfyRaiseGrant() {
+    public boolean getSatisfyRaiseGrant() {
         return false;
     }
 
     @Override
-    public boolean GetSatisfyBaseGrant() {
+    public boolean getSatisfyBaseGrant() {
         return false;
     }
 }

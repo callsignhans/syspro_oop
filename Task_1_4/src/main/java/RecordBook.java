@@ -23,62 +23,62 @@ public class RecordBook {
         this.assessments.addAll(assessments);
     }
 
-    Double GetMediumGrade() {
+    Double getMediumGrade() {
         var result = assessments.stream().filter(obj -> obj instanceof DifferentAssessment)
-                .collect(Collectors.toMap(Assessment::GetName, obj -> obj,
-                (obj1, obj2) -> obj1.GetSemester() < obj2.GetSemester() ? obj2 : obj1)).values();
+                .collect(Collectors.toMap(Assessment::getName, obj -> obj,
+                (obj1, obj2) -> obj1.getSemester() < obj2.getSemester() ? obj2 : obj1)).values();
         return result.stream().mapToInt(obj -> ((DifferentAssessment)obj).GetGrade()).average()
                 .orElse(0);
     }
 
-    boolean GetStatusFreeEducation() {
+    boolean getStatusFreeEducation() {
         return freeEducationStatus;
     }
 
-    boolean GetPossibleTransferToFreeEducation() {
+    boolean getPossibleTransferToFreeEducation() {
         if (freeEducationStatus) {
             return true;
         }
-        var nowSemester = assessments.stream().mapToInt(Assessment::GetSemester).max().orElse(0);
+        var nowSemester = assessments.stream().mapToInt(Assessment::getSemester).max().orElse(0);
         if (nowSemester == 0) {
             return false;
         }
-        return assessments.stream().filter(obj -> (obj.GetSemester() == nowSemester ||
-                obj.GetSemester() == nowSemester - 1)).allMatch(Assessment::GetSatisfyFreeEducation);
+        return assessments.stream().filter(obj -> (obj.getSemester() == nowSemester ||
+                obj.getSemester() == nowSemester - 1)).allMatch(Assessment::getSatisfyFreeEducation);
     }
 
-    boolean GetStatusDiplomaHonor() {
-        var satisfyMediumGrade = this.GetMediumGrade() >= 4.75;
+    boolean getStatusDiplomaHonor() {
+        var satisfyMediumGrade = this.getMediumGrade() >= 4.75;
         var gradeOfQualificationPaper = assessments.stream()
                 .filter(obj -> obj instanceof QualificationPaperAssessment)
                 .mapToInt(obj -> ((QualificationPaperAssessment)obj).GetGrade())
                 .allMatch(obj -> obj == 5);
-        var haveNotThree = assessments.stream().filter(Assessment::GetImpactDiplomaHonor)
+        var haveNotThree = assessments.stream().filter(Assessment::getImpactDiplomaHonor)
                 .allMatch( obj -> ((DifferentAssessment)obj).GetGrade() > 3);
         return satisfyMediumGrade && gradeOfQualificationPaper && haveNotThree;
     }
 
-    boolean GetStatusBaseGrand() {
-        var nowSemester = assessments.stream().mapToInt(Assessment::GetSemester).max().orElse(0);
-        return assessments.stream().filter(obj -> obj.GetSemester() == nowSemester)
-                .allMatch(Assessment::GetSatisfyBaseGrant);
+    boolean getStatusBaseGrand() {
+        var nowSemester = assessments.stream().mapToInt(Assessment::getSemester).max().orElse(0);
+        return assessments.stream().filter(obj -> obj.getSemester() == nowSemester)
+                .allMatch(Assessment::getSatisfyBaseGrant);
     }
 
-    boolean GetStatusRaiseGrand() {
-        var nowSemester = assessments.stream().mapToInt(Assessment::GetSemester).max().orElse(0);
-        return assessments.stream().filter(obj -> obj.GetSemester() == nowSemester)
-                .allMatch(Assessment::GetSatisfyRaiseGrant);
+    boolean getStatusRaiseGrand() {
+        var nowSemester = assessments.stream().mapToInt(Assessment::getSemester).max().orElse(0);
+        return assessments.stream().filter(obj -> obj.getSemester() == nowSemester)
+                .allMatch(Assessment::getSatisfyRaiseGrant);
     }
 
-    void AddAssessment(Assessment newGrade) {
+    void addAssessment(Assessment newGrade) {
         if (newGrade == null) {
             throw new NullPointerException("Argument 'newGrade' must isn't null");
         }
         assessments.add(newGrade);
     }
 
-    void TransferToFreeEducation() {
-        if (GetPossibleTransferToFreeEducation()) {
+    void transferToFreeEducation() {
+        if (getPossibleTransferToFreeEducation()) {
             freeEducationStatus = true;
         }
         else {

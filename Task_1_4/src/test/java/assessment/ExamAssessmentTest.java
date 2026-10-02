@@ -19,8 +19,8 @@ class ExamAssessmentTest {
         void shouldCreateInstanceWithValidParameters() {
             ExamAssessment assessment = new ExamAssessment("Математический анализ", 3, 5);
 
-            Assertions.assertEquals("Математический анализ", assessment.GetName());
-            Assertions.assertEquals(3, assessment.GetSemester());
+            Assertions.assertEquals("Математический анализ", assessment.getName());
+            Assertions.assertEquals(3, assessment.getSemester());
             Assertions.assertEquals(5, assessment.GetGrade());
         }
 
@@ -69,7 +69,7 @@ class ExamAssessmentTest {
         @DisplayName("GetSatisfyFreeEducation возвращает true только для оценок >= 4")
         void testGetSatisfyFreeEducation(int grade, boolean expectedResult) {
             ExamAssessment assessment = new ExamAssessment("История", 1, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyFreeEducation());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyFreeEducation());
         }
 
         @ParameterizedTest
@@ -83,7 +83,7 @@ class ExamAssessmentTest {
             + " (наследование от DifferentAssessment)")
         void testGetSatisfyRaiseGrant(int grade, boolean expectedResult) {
             ExamAssessment assessment = new ExamAssessment("История", 1, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyRaiseGrant());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyRaiseGrant());
         }
 
         @ParameterizedTest
@@ -97,7 +97,7 @@ class ExamAssessmentTest {
             + " (наследование от DifferentAssessment)")
         void testGetSatisfyBaseGrant(int grade, boolean expectedResult) {
             ExamAssessment assessment = new ExamAssessment("История", 1, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyBaseGrant());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyBaseGrant());
         }
 
         @Test
@@ -105,7 +105,7 @@ class ExamAssessmentTest {
             + " (наследование от DifferentAssessment)")
         void getImpactDiplomaHonor_ShouldReturnTrue() {
             ExamAssessment assessment = new ExamAssessment("История", 1, 4);
-            Assertions.assertTrue(assessment.GetImpactDiplomaHonor());
+            Assertions.assertTrue(assessment.getImpactDiplomaHonor());
         }
     }
 }

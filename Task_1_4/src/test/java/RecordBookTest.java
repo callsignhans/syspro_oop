@@ -23,8 +23,8 @@ class RecordBookTest {
         void shouldInitializeEmptyRecordBook() {
             RecordBook recordBook = new RecordBook(101, false);
 
-            Assertions.assertFalse(recordBook.GetStatusFreeEducation());
-            Assertions.assertEquals(0.0, recordBook.GetMediumGrade());
+            Assertions.assertFalse(recordBook.getStatusFreeEducation());
+            Assertions.assertEquals(0.0, recordBook.getMediumGrade());
         }
 
         @Test
@@ -36,8 +36,8 @@ class RecordBookTest {
             ));
             RecordBook recordBook = new RecordBook(102, true, list);
 
-            Assertions.assertTrue(recordBook.GetStatusFreeEducation());
-            Assertions.assertEquals(4.5, recordBook.GetMediumGrade());
+            Assertions.assertTrue(recordBook.getStatusFreeEducation());
+            Assertions.assertEquals(4.5, recordBook.getMediumGrade());
         }
 
         @Test
@@ -47,7 +47,7 @@ class RecordBookTest {
 
             NullPointerException exception = Assertions.assertThrows(
                     NullPointerException.class,
-                    () -> recordBook.AddAssessment(null)
+                    () -> recordBook.addAssessment(null)
             );
             Assertions.assertTrue(exception.getMessage()
                 .contains("Argument 'newGrade' must isn't null"));
@@ -64,12 +64,12 @@ class RecordBookTest {
         void shouldTransferToFreeEducationWhenConditionsAreMet() {
             RecordBook recordBook = new RecordBook(104, false);
 
-            recordBook.AddAssessment(new ExamAssessment("Программирование", 1, 4));
-            recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 1, 4));
+            recordBook.addAssessment(new ExamAssessment("Программирование", 1, 4));
+            recordBook.addAssessment(new DifferentCreditAssessment("Практика", 1, 4));
 
-            Assertions.assertDoesNotThrow(() -> recordBook.TransferToFreeEducation());
+            Assertions.assertDoesNotThrow(() -> recordBook.transferToFreeEducation());
 
-            Assertions.assertTrue(recordBook.GetStatusFreeEducation());
+            Assertions.assertTrue(recordBook.getStatusFreeEducation());
         }
 
         @Test
@@ -78,18 +78,18 @@ class RecordBookTest {
             RecordBook recordBook = new RecordBook(105, false);
 
             // Добавляем плохую оценку (тройку за экзамен), из-за которой перевод невозможен
-            recordBook.AddAssessment(new ExamAssessment("Высшая математика", 1, 3));
+            recordBook.addAssessment(new ExamAssessment("Высшая математика", 1, 3));
 
             // Проверяем, что выбрасывается правильное исключение с ожидаемым текстом
             IllegalStateException exception = Assertions.assertThrows(
                     IllegalStateException.class,
-                    () -> recordBook.TransferToFreeEducation()
+                    () -> recordBook.transferToFreeEducation()
             );
 
             Assertions.assertTrue(exception.getMessage()
                 .contains("grades not satisfy of transfer to free education"));
             // Статус должен остаться прежним (false)
-            Assertions.assertFalse(recordBook.GetStatusFreeEducation());
+            Assertions.assertFalse(recordBook.getStatusFreeEducation());
         }
 
         @Test
@@ -98,8 +98,8 @@ class RecordBookTest {
             // Если студент уже на бюджете, GetPossibleTransferToFreeEducation() всегда возвращает true
             RecordBook recordBook = new RecordBook(106, true);
 
-            Assertions.assertDoesNotThrow(() -> recordBook.TransferToFreeEducation());
-            Assertions.assertTrue(recordBook.GetStatusFreeEducation());
+            Assertions.assertDoesNotThrow(() -> recordBook.transferToFreeEducation());
+            Assertions.assertTrue(recordBook.getStatusFreeEducation());
         }
     }
 
@@ -112,9 +112,9 @@ class RecordBookTest {
         @DisplayName("Возвращает 0, если в зачетке нет оценок с баллами")
         void shouldReturnZeroForEmptyOrBinaryOnly() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new BinaryAssessment("Физкультура", 1, true));
+            recordBook.addAssessment(new BinaryAssessment("Физкультура", 1, true));
 
-            Assertions.assertEquals(0.0, recordBook.GetMediumGrade());
+            Assertions.assertEquals(0.0, recordBook.getMediumGrade());
         }
 
         @Test
@@ -123,12 +123,12 @@ class RecordBookTest {
         void shouldTakeOnlyLatestSemesterForSameSubject() {
             RecordBook recordBook = new RecordBook(1, true);
             // Математика в 1 семестре на 3, во 2 семестре на 5
-            recordBook.AddAssessment(new ExamAssessment("Математика", 1, 3));
-            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 5));
-            recordBook.AddAssessment(new ExamAssessment("Физика", 1, 4));
+            recordBook.addAssessment(new ExamAssessment("Математика", 1, 3));
+            recordBook.addAssessment(new ExamAssessment("Математика", 2, 5));
+            recordBook.addAssessment(new ExamAssessment("Физика", 1, 4));
 
             // Средний балл должен считаться по Математике(5) и Физике(4) -> (5 + 4) / 2 = 4.5
-            Assertions.assertEquals(4.5, recordBook.GetMediumGrade());
+            Assertions.assertEquals(4.5, recordBook.getMediumGrade());
         }
     }
 
@@ -140,26 +140,26 @@ class RecordBookTest {
         @DisplayName("Возвращает true, если студент уже учится на бюджете")
         void shouldReturnTrueIfAlreadyFreeEducation() {
             RecordBook recordBook = new RecordBook(1, true);
-            Assertions.assertTrue(recordBook.GetPossibleTransferToFreeEducation());
+            Assertions.assertTrue(recordBook.getPossibleTransferToFreeEducation());
         }
 
         @Test
         @DisplayName("Возвращает false, если у платного студента вообще нет оценок")
         void shouldReturnFalseIfNoAssessments() {
             RecordBook recordBook = new RecordBook(1, false);
-            Assertions.assertFalse(recordBook.GetPossibleTransferToFreeEducation());
+            Assertions.assertFalse(recordBook.getPossibleTransferToFreeEducation());
         }
 
         @Test
-        @DisplayName("Возвращает true, если за последние два семестра" +
-            " все оценки удовлетворяют условиям")
+        @DisplayName("Возвращает true, если за последние два семестра"
+            +  " все оценки удовлетворяют условиям")
         void shouldReturnTrueIfLastTwoSemestersAreSatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
-            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 4));
-            recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 2, 3));
-            recordBook.AddAssessment(new ExamAssessment("История", 1, 3));
+            recordBook.addAssessment(new ExamAssessment("Программирование", 3, 4));
+            recordBook.addAssessment(new DifferentCreditAssessment("Практика", 2, 3));
+            recordBook.addAssessment(new ExamAssessment("История", 1, 3));
 
-            Assertions.assertTrue(recordBook.GetPossibleTransferToFreeEducation());
+            Assertions.assertTrue(recordBook.getPossibleTransferToFreeEducation());
         }
 
         @Test
@@ -167,10 +167,10 @@ class RecordBookTest {
             + " за последние два семестра плохая")
         void shouldReturnFalseIfAnyLastTwoSemestersUnsatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
-            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 3));
-            recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 2, 4));
+            recordBook.addAssessment(new ExamAssessment("Программирование", 3, 3));
+            recordBook.addAssessment(new DifferentCreditAssessment("Практика", 2, 4));
 
-            Assertions.assertFalse(recordBook.GetPossibleTransferToFreeEducation());
+            Assertions.assertFalse(recordBook.getPossibleTransferToFreeEducation());
         }
     }
 
@@ -183,36 +183,36 @@ class RecordBookTest {
             + " (балл > 4.75, квал. работа = 5, нет троек)")
         void shouldReturnTrueWhenAllConditionsMet() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Предмет 1", 1, 5));
-            recordBook.AddAssessment(new ExamAssessment("Предмет 2", 1, 5));
-            recordBook.AddAssessment(new ExamAssessment("Предмет 3", 1, 5));
-            recordBook.AddAssessment(new ExamAssessment("Предмет 4", 1, 4));
+            recordBook.addAssessment(new ExamAssessment("Предмет 1", 1, 5));
+            recordBook.addAssessment(new ExamAssessment("Предмет 2", 1, 5));
+            recordBook.addAssessment(new ExamAssessment("Предмет 3", 1, 5));
+            recordBook.addAssessment(new ExamAssessment("Предмет 4", 1, 4));
 
-            recordBook.AddAssessment(new QualificationPaperAssessment(5));
-            recordBook.AddAssessment(new BinaryAssessment("Физкультура", 1, true));
+            recordBook.addAssessment(new QualificationPaperAssessment(5));
+            recordBook.addAssessment(new BinaryAssessment("Физкультура", 1, true));
 
-            Assertions.assertTrue(recordBook.GetStatusDiplomaHonor());
+            Assertions.assertTrue(recordBook.getStatusDiplomaHonor());
         }
 
         @Test
         @DisplayName("Возвращает false, если средний балл ниже 4.75")
         void shouldReturnFalseWhenMediumGradeIsLow() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Предмет 1", 1, 4));
-            recordBook.AddAssessment(new ExamAssessment("Предмет 2", 1, 5));
-            recordBook.AddAssessment(new QualificationPaperAssessment(5));
+            recordBook.addAssessment(new ExamAssessment("Предмет 1", 1, 4));
+            recordBook.addAssessment(new ExamAssessment("Предмет 2", 1, 5));
+            recordBook.addAssessment(new QualificationPaperAssessment(5));
 
-            Assertions.assertFalse(recordBook.GetStatusDiplomaHonor());
+            Assertions.assertFalse(recordBook.getStatusDiplomaHonor());
         }
 
         @Test
         @DisplayName("Возвращает false, если за квалификационную работу оценка ниже 5")
         void shouldReturnFalseWhenQualificationPaperIsNotFive() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Предмет 1", 1, 5));
-            recordBook.AddAssessment(new QualificationPaperAssessment(4)); // Не отлично
+            recordBook.addAssessment(new ExamAssessment("Предмет 1", 1, 5));
+            recordBook.addAssessment(new QualificationPaperAssessment(4)); // Не отлично
 
-            Assertions.assertFalse(recordBook.GetStatusDiplomaHonor());
+            Assertions.assertFalse(recordBook.getStatusDiplomaHonor());
         }
 
         @Test
@@ -222,12 +222,12 @@ class RecordBookTest {
             RecordBook recordBook = new RecordBook(1, true);
             // Наберем много пятерок для высокого среднего балла
             for (int i = 0; i < 10; i++) {
-                recordBook.AddAssessment(new ExamAssessment("Предмет " + i, 1, 5));
+                recordBook.addAssessment(new ExamAssessment("Предмет " + i, 1, 5));
             }
-            recordBook.AddAssessment(new ExamAssessment("Проблемный предмет", 1, 3));
-            recordBook.AddAssessment(new QualificationPaperAssessment(5));
+            recordBook.addAssessment(new ExamAssessment("Проблемный предмет", 1, 3));
+            recordBook.addAssessment(new QualificationPaperAssessment(5));
 
-            Assertions.assertFalse(recordBook.GetStatusDiplomaHonor());
+            Assertions.assertFalse(recordBook.getStatusDiplomaHonor());
         }
     }
 
@@ -240,14 +240,14 @@ class RecordBookTest {
             + " закрыты на базовый грант")
         void testGetStatusBaseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 4));
-            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 4));
-            recordBook.AddAssessment(new ExamAssessment("Физика", 1, 3));
+            recordBook.addAssessment(new ExamAssessment("Математика", 2, 4));
+            recordBook.addAssessment(new DifferentCreditAssessment("История", 2, 4));
+            recordBook.addAssessment(new ExamAssessment("Физика", 1, 3));
 
-            Assertions.assertTrue(recordBook.GetStatusBaseGrand());
+            Assertions.assertTrue(recordBook.getStatusBaseGrand());
 
-            recordBook.AddAssessment(new ExamAssessment("Химия", 2, 3));
-            Assertions.assertFalse(recordBook.GetStatusBaseGrand());
+            recordBook.addAssessment(new ExamAssessment("Химия", 2, 3));
+            Assertions.assertFalse(recordBook.getStatusBaseGrand());
         }
 
         @Test
@@ -255,12 +255,12 @@ class RecordBookTest {
             + " закрыты на только 5)")
         void testGetStatusRaiseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 5));
-            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 5));
-            Assertions.assertTrue(recordBook.GetStatusRaiseGrand());
+            recordBook.addAssessment(new ExamAssessment("Математика", 2, 5));
+            recordBook.addAssessment(new DifferentCreditAssessment("История", 2, 5));
+            Assertions.assertTrue(recordBook.getStatusRaiseGrand());
 
-            recordBook.AddAssessment(new ExamAssessment("Химия", 2, 4));
-            Assertions.assertFalse(recordBook.GetStatusRaiseGrand());
+            recordBook.addAssessment(new ExamAssessment("Химия", 2, 4));
+            Assertions.assertFalse(recordBook.getStatusRaiseGrand());
         }
     }
 }

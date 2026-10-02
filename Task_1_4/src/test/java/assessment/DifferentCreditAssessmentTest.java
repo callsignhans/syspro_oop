@@ -20,8 +20,8 @@ class DifferentCreditAssessmentTest {
             DifferentCreditAssessment assessment =
                 new DifferentCreditAssessment("Дифференцированный зачет", 4, 4);
 
-            Assertions.assertEquals("Дифференцированный зачет", assessment.GetName());
-            Assertions.assertEquals(4, assessment.GetSemester());
+            Assertions.assertEquals("Дифференцированный зачет", assessment.getName());
+            Assertions.assertEquals(4, assessment.getSemester());
             Assertions.assertEquals(4, assessment.GetGrade());
         }
 
@@ -71,7 +71,7 @@ class DifferentCreditAssessmentTest {
         void testGetSatisfyFreeEducation(int grade, boolean expectedResult) {
             DifferentCreditAssessment assessment
                 = new DifferentCreditAssessment("Практика", 2, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyFreeEducation());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyFreeEducation());
         }
 
         @ParameterizedTest
@@ -86,7 +86,7 @@ class DifferentCreditAssessmentTest {
         void testGetSatisfyRaiseGrant(int grade, boolean expectedResult) {
             DifferentCreditAssessment assessment
                 = new DifferentCreditAssessment("Практика", 2, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyRaiseGrant());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyRaiseGrant());
         }
 
         @ParameterizedTest
@@ -101,7 +101,7 @@ class DifferentCreditAssessmentTest {
         void testGetSatisfyBaseGrant(int grade, boolean expectedResult) {
             DifferentCreditAssessment assessment
                 = new DifferentCreditAssessment("Практика", 2, grade);
-            Assertions.assertEquals(expectedResult, assessment.GetSatisfyBaseGrant());
+            Assertions.assertEquals(expectedResult, assessment.getSatisfyBaseGrant());
         }
 
         @Test
@@ -110,7 +110,7 @@ class DifferentCreditAssessmentTest {
         void getImpactDiplomaHonor_ShouldReturnTrue() {
             DifferentCreditAssessment assessment
                 = new DifferentCreditAssessment("Практика", 2, 4);
-            Assertions.assertTrue(assessment.GetImpactDiplomaHonor());
+            Assertions.assertTrue(assessment.getImpactDiplomaHonor());
         }
     }
 }
