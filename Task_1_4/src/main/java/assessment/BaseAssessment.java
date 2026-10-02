@@ -14,8 +14,8 @@ public abstract class BaseAssessment implements Assessment {
             throw new IllegalArgumentException("Argument 'semster' must is positive");
         }
         if (semester > MAX_SEMESTER) {
-            throw new IllegalArgumentException("Argument 'semester' equal " + semester +
-                    ". Value argument must less " + MAX_SEMESTER);
+            throw new IllegalArgumentException("Argument 'semester' equal " + semester
+                + ". Value argument must less " + MAX_SEMESTER);
         }
         this.name = name;
         this.semester = semester;

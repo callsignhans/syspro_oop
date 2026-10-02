@@ -78,8 +78,8 @@ class QualificationPaperAssessmentTest {
 
         @ParameterizedTest
         @ValueSource(ints = {2, 3, 4, 5})
-        @DisplayName("GetImpactDiplomaHonor всегда возвращает true" +
-            " (унаследовано от DifferentAssessment)")
+        @DisplayName("GetImpactDiplomaHonor всегда возвращает true"
+            + " (унаследовано от DifferentAssessment)")
         void getImpactDiplomaHonor_ShouldAlwaysReturnTrue(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
             Assertions.assertTrue(assessment.GetImpactDiplomaHonor());

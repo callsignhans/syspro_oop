@@ -49,7 +49,8 @@ class RecordBookTest {
                     NullPointerException.class,
                     () -> recordBook.AddAssessment(null)
             );
-            Assertions.assertTrue(exception.getMessage().contains("Argument 'newGrade' must isn't null"));
+            Assertions.assertTrue(exception.getMessage()
+                .contains("Argument 'newGrade' must isn't null"));
         }
 
     }
@@ -85,7 +86,8 @@ class RecordBookTest {
                     () -> recordBook.TransferToFreeEducation()
             );
 
-            Assertions.assertTrue(exception.getMessage().contains("grades not satisfy of transfer to free education"));
+            Assertions.assertTrue(exception.getMessage()
+                .contains("grades not satisfy of transfer to free education"));
             // Статус должен остаться прежним (false)
             Assertions.assertFalse(recordBook.GetStatusFreeEducation());
         }
@@ -116,7 +118,8 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Если предмет сдавался несколько раз, учитывается только оценка за последний семестр")
+        @DisplayName("Если предмет сдавался несколько раз, "
+            + "учитывается только оценка за последний семестр")
         void shouldTakeOnlyLatestSemesterForSameSubject() {
             RecordBook recordBook = new RecordBook(1, true);
             // Математика в 1 семестре на 3, во 2 семестре на 5
@@ -148,7 +151,8 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Возвращает true, если за последние два семестра все оценки удовлетворяют условиям")
+        @DisplayName("Возвращает true, если за последние два семестра" +
+            " все оценки удовлетворяют условиям")
         void shouldReturnTrueIfLastTwoSemestersAreSatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
             recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 4));
@@ -159,7 +163,8 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Возвращает false, если хотя бы одна оценка за последние два семестра плохая")
+        @DisplayName("Возвращает false, если хотя бы одна оценка"
+            + " за последние два семестра плохая")
         void shouldReturnFalseIfAnyLastTwoSemestersUnsatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
             recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 3));
@@ -174,7 +179,8 @@ class RecordBookTest {
     class DiplomaHonorTests {
 
         @Test
-        @DisplayName("Возвращает true при выполнении всех условий (балл > 4.75, квал. работа = 5, нет троек)")
+        @DisplayName("Возвращает true при выполнении всех условий"
+            + " (балл > 4.75, квал. работа = 5, нет троек)")
         void shouldReturnTrueWhenAllConditionsMet() {
             RecordBook recordBook = new RecordBook(1, true);
             recordBook.AddAssessment(new ExamAssessment("Предмет 1", 1, 5));
@@ -210,7 +216,8 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Возвращает false, если есть хотя бы одна тройка по влияющему на диплом предмету")
+        @DisplayName("Возвращает false, если есть хотя бы одна тройка"
+            + " по влияющему на диплом предмету")
         void shouldReturnFalseWhenHasThree() {
             RecordBook recordBook = new RecordBook(1, true);
             // Наберем много пятерок для высокого среднего балла
@@ -229,7 +236,8 @@ class RecordBookTest {
     class GrantTests {
 
         @Test
-        @DisplayName("Обычная стипендия выдается, если все предметы текущего семестра закрыты на базовый грант")
+        @DisplayName("Обычная стипендия выдается, если все предметы текущего семестра"
+            + " закрыты на базовый грант")
         void testGetStatusBaseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
             recordBook.AddAssessment(new ExamAssessment("Математика", 2, 4));
@@ -243,7 +251,8 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Повышенная стипендия выдается, если все предметы текущего семестра закрыты на только 5)")
+        @DisplayName("Повышенная стипендия выдается, если все предметы текущего семестра"
+            + " закрыты на только 5)")
         void testGetStatusRaiseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
             recordBook.AddAssessment(new ExamAssessment("Математика", 2, 5));
