@@ -4,7 +4,7 @@ public class BinaryAssessment extends BaseAssessment {
 
     boolean result;
 
-    BinaryAssessment(String name, int semester, boolean result) {
+    public BinaryAssessment(String name, int semester, boolean result) {
         super(name, semester);
         this.result = result;
     }

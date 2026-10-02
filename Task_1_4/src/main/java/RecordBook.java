@@ -27,12 +27,8 @@ public class RecordBook {
         var result = assessments.stream().filter(obj -> obj instanceof DifferentAssessment)
                 .collect(Collectors.toMap(Assessment::GetName, obj -> obj,
                 (obj1, obj2) -> obj1.GetSemester() < obj2.GetSemester() ? obj2 : obj1)).values();
-        return result.stream().mapToInt(obj -> {
-                if (obj instanceof DifferentAssessment dif) {
-                    return dif.GetGrade();
-                }
-                else return 0;
-            }).average().orElse(0);
+        return result.stream().mapToInt(obj -> ((DifferentAssessment)obj).GetGrade()).average()
+                .orElse(0);
     }
 
     boolean GetStatusFreeEducation() {
@@ -52,18 +48,13 @@ public class RecordBook {
     }
 
     boolean GetStatusDiplomaHonor() {
-        var satisfyMediumGrade = this.GetMediumGrade() > 4.75;
+        var satisfyMediumGrade = this.GetMediumGrade() >= 4.75;
         var gradeOfQualificationPaper = assessments.stream()
                 .filter(obj -> obj instanceof QualificationPaperAssessment)
                 .mapToInt(obj -> ((QualificationPaperAssessment)obj).GetGrade())
                 .allMatch(obj -> obj == 5);
         var haveNotThree = assessments.stream().filter(Assessment::GetImpactDiplomaHonor)
-                .allMatch( obj -> {
-                    if( obj instanceof DifferentAssessment dif) {
-                        return dif.GetGrade() > 3;
-                    }
-                    return true;
-                });
+                .allMatch( obj -> ((DifferentAssessment)obj).GetGrade() > 3);
         return satisfyMediumGrade && gradeOfQualificationPaper && haveNotThree;
     }
 
@@ -87,7 +78,12 @@ public class RecordBook {
     }
 
     void TransferToFreeEducation() {
-        freeEducationStatus = true;
+        if (GetPossibleTransferToFreeEducation()) {
+            freeEducationStatus = true;
+        }
+        else {
+            throw new IllegalStateException("grades not satisfy of transfer to free education");
+        }
     }
 
 }
