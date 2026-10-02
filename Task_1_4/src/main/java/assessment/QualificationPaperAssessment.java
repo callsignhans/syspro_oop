@@ -1,6 +1,6 @@
 package assessment;
 
-public class QualificationPaperAssessment extends DifferentAssessment {
+public final class QualificationPaperAssessment extends DifferentAssessment {
     private static final String  QUALIFICATION_PAPER = "Квалификационная работа";
 
     public QualificationPaperAssessment(int grade) {

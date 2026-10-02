@@ -1,6 +1,9 @@
 package assessment;
 
-public class DifferentCreditAssessment extends DifferentAssessment {
+/**
+ * Assessments type match differentiated assessment.
+ */
+public final class DifferentCreditAssessment extends DifferentAssessment {
 
     public DifferentCreditAssessment(String name, int semester, int grade) {
         super(name, semester, grade);

@@ -1,6 +1,9 @@
 package assessment;
 
-public class BinaryAssessment extends BaseAssessment {
+/**
+ * Assessments type match non-differentiated pass/fail assessment.
+ */
+public final class BinaryAssessment extends BaseAssessment {
 
     boolean result;
 

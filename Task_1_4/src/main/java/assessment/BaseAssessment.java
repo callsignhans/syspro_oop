@@ -1,5 +1,8 @@
 package assessment;
 
+/**
+ * Abstract class of base logic assessment.
+ */
 public abstract class BaseAssessment implements Assessment {
     public static final int MAX_SEMESTER = 8;
 

@@ -1,5 +1,8 @@
 package assessment;
 
+/**
+ * Abstract class implement logic of assessment with integer grade.
+ */
 public abstract class DifferentAssessment extends BaseAssessment {
 
     public static final int MIN_VALUE_GRADE = 2;

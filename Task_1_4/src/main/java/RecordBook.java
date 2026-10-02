@@ -5,6 +5,9 @@ import assessment.QualificationPaperAssessment;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * Class record book of mmf's student.
+ */
 public class RecordBook {
 
     int id;
@@ -12,17 +15,21 @@ public class RecordBook {
 
     ArrayList<Assessment> assessments;
 
-    public RecordBook(int id, boolean freeEducationStatus){
+    public RecordBook(int id, boolean freeEducationStatus) {
         this.id = id;
         this.freeEducationStatus = freeEducationStatus;
         assessments = new ArrayList<>();
     }
 
-    public RecordBook(int id, boolean freeEducationStatus, ArrayList<Assessment> assessments){
+    public RecordBook(int id, boolean freeEducationStatus, ArrayList<Assessment> assessments) {
         this(id, freeEducationStatus);
         this.assessments.addAll(assessments);
     }
 
+    /**
+     * Method calculate medium grade.
+     * @return if record book isn't empty return medium grade, else return 0
+     */
     Double getMediumGrade() {
         var result = assessments.stream().filter(obj -> obj instanceof DifferentAssessment)
             .collect(Collectors.toMap(Assessment::getName, obj -> obj,
@@ -32,6 +39,10 @@ public class RecordBook {
             .average().orElse(0);
     }
 
+    /**
+     * Method define state-funded education status student.
+     * @return if student is state-funded education return true, else return false
+     */
     boolean getStatusFreeEducation() {
         return freeEducationStatus;
     }
@@ -55,7 +66,7 @@ public class RecordBook {
             .mapToInt(obj -> ((QualificationPaperAssessment) obj).GetGrade())
             .allMatch(obj -> obj == 5);
         var haveNotThree = assessments.stream().filter(Assessment::getImpactDiplomaHonor)
-            .allMatch( obj -> ((DifferentAssessment) obj).GetGrade() > 3);
+            .allMatch(obj -> ((DifferentAssessment) obj).GetGrade() > 3);
         return satisfyMediumGrade && gradeOfQualificationPaper && haveNotThree;
     }
 

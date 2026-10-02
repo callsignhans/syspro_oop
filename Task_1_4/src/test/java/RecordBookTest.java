@@ -95,9 +95,7 @@ class RecordBookTest {
         @Test
         @DisplayName("Успешный перевод, если студент уже находится на бесплатном обучении")
         void shouldDoNothingButStayTrueIfAlreadyFreeEducation() {
-            // Если студент уже на бюджете, GetPossibleTransferToFreeEducation() всегда возвращает true
             RecordBook recordBook = new RecordBook(106, true);
-
             Assertions.assertDoesNotThrow(() -> recordBook.transferToFreeEducation());
             Assertions.assertTrue(recordBook.getStatusFreeEducation());
         }
