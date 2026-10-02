@@ -21,7 +21,7 @@ class ExamAssessmentTest {
 
             Assertions.assertEquals("Математический анализ", assessment.getName());
             Assertions.assertEquals(3, assessment.getSemester());
-            Assertions.assertEquals(5, assessment.GetGrade());
+            Assertions.assertEquals(5, assessment.getGrade());
         }
 
         @Test

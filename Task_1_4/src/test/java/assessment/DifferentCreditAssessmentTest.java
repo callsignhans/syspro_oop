@@ -22,7 +22,7 @@ class DifferentCreditAssessmentTest {
 
             Assertions.assertEquals("Дифференцированный зачет", assessment.getName());
             Assertions.assertEquals(4, assessment.getSemester());
-            Assertions.assertEquals(4, assessment.GetGrade());
+            Assertions.assertEquals(4, assessment.getGrade());
         }
 
         @Test

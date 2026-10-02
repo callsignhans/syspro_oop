@@ -1,5 +1,8 @@
 package assessment;
 
+/**
+ * Assessment type match qualification paper in last semester.
+ */
 public final class QualificationPaperAssessment extends DifferentAssessment {
     private static final String  QUALIFICATION_PAPER = "Квалификационная работа";
 
@@ -10,8 +13,6 @@ public final class QualificationPaperAssessment extends DifferentAssessment {
     @Override
     public boolean getSatisfyFreeEducation() {
         return false;
-        //throw new IllegalStateException("Student get grade of qualification paper on last
-        // semester. Student can't ");
     }
 
     @Override

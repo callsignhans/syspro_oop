@@ -21,7 +21,7 @@ class QualificationPaperAssessmentTest {
 
             Assertions.assertEquals("Квалификационная работа", assessment.getName());
             Assertions.assertEquals(BaseAssessment.MAX_SEMESTER, assessment.getSemester());
-            Assertions.assertEquals(validGrade, assessment.GetGrade());
+            Assertions.assertEquals(validGrade, assessment.getGrade());
         }
 
         @Test

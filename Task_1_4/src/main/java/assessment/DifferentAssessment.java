@@ -22,7 +22,7 @@ public abstract class DifferentAssessment extends BaseAssessment {
         this.grade = grade;
     }
 
-    public int GetGrade() {
+    public int getGrade() {
         return grade;
     }
 
