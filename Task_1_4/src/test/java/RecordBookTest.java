@@ -151,9 +151,9 @@ class RecordBookTest {
         @DisplayName("Возвращает true, если за последние два семестра все оценки удовлетворяют условиям")
         void shouldReturnTrueIfLastTwoSemestersAreSatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
-            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 4)); // удовлетворяет (>=4)
-            recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 2, 3)); // удовлетворяет (>=3)
-            recordBook.AddAssessment(new ExamAssessment("История", 1, 3)); // 1 семестр игнорируется, хоть там и тройка за экзамен
+            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 4));
+            recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 2, 3));
+            recordBook.AddAssessment(new ExamAssessment("История", 1, 3));
 
             Assertions.assertTrue(recordBook.GetPossibleTransferToFreeEducation());
         }
@@ -162,7 +162,7 @@ class RecordBookTest {
         @DisplayName("Возвращает false, если хотя бы одна оценка за последние два семестра плохая")
         void shouldReturnFalseIfAnyLastTwoSemestersUnsatisfactory() {
             RecordBook recordBook = new RecordBook(1, false);
-            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 3)); // экзамен на 3 НЕ удовлетворяет условиям бюджета
+            recordBook.AddAssessment(new ExamAssessment("Программирование", 3, 3));
             recordBook.AddAssessment(new DifferentCreditAssessment("Практика", 2, 4));
 
             Assertions.assertFalse(recordBook.GetPossibleTransferToFreeEducation());
@@ -182,8 +182,8 @@ class RecordBookTest {
             recordBook.AddAssessment(new ExamAssessment("Предмет 3", 1, 5));
             recordBook.AddAssessment(new ExamAssessment("Предмет 4", 1, 4));
 
-            recordBook.AddAssessment(new QualificationPaperAssessment(5)); // Квалификационная работа на 5
-            recordBook.AddAssessment(new BinaryAssessment("Физкультура", 1, true)); // Зачет не влияет на тройки
+            recordBook.AddAssessment(new QualificationPaperAssessment(5));
+            recordBook.AddAssessment(new BinaryAssessment("Физкультура", 1, true));
 
             Assertions.assertTrue(recordBook.GetStatusDiplomaHonor());
         }
@@ -217,7 +217,7 @@ class RecordBookTest {
             for (int i = 0; i < 10; i++) {
                 recordBook.AddAssessment(new ExamAssessment("Предмет " + i, 1, 5));
             }
-            recordBook.AddAssessment(new ExamAssessment("Проблемный предмет", 1, 3)); // Тройка!
+            recordBook.AddAssessment(new ExamAssessment("Проблемный предмет", 1, 3));
             recordBook.AddAssessment(new QualificationPaperAssessment(5));
 
             Assertions.assertFalse(recordBook.GetStatusDiplomaHonor());
@@ -232,9 +232,9 @@ class RecordBookTest {
         @DisplayName("Обычная стипендия выдается, если все предметы текущего семестра закрыты на базовый грант")
         void testGetStatusBaseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 4)); // удовлетворяет
-            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 4)); // удовлетворяет
-            recordBook.AddAssessment(new ExamAssessment("Физика", 1, 3)); // прошлый семестр игнорируется
+            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 4));
+            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 4));
+            recordBook.AddAssessment(new ExamAssessment("Физика", 1, 3));
 
             Assertions.assertTrue(recordBook.GetStatusBaseGrand());
 
@@ -243,11 +243,11 @@ class RecordBookTest {
         }
 
         @Test
-        @DisplayName("Повышенная стипендия выдается, если все предметы текущего семестра закрыты на повышенный грант (только 5)")
+        @DisplayName("Повышенная стипендия выдается, если все предметы текущего семестра закрыты на только 5)")
         void testGetStatusRaiseGrant() {
             RecordBook recordBook = new RecordBook(1, true);
-            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 5)); // удовлетворяет
-            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 5)); // удовлетворяет
+            recordBook.AddAssessment(new ExamAssessment("Математика", 2, 5));
+            recordBook.AddAssessment(new DifferentCreditAssessment("История", 2, 5));
             Assertions.assertTrue(recordBook.GetStatusRaiseGrand());
 
             recordBook.AddAssessment(new ExamAssessment("Химия", 2, 4));
