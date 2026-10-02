@@ -61,10 +61,10 @@ class DifferentCreditAssessmentTest {
 
         @ParameterizedTest
         @CsvSource({
-                "2, false",
-                "3, true",
-                "4, true",
-                "5, true"
+            "2, false",
+            "3, true",
+            "4, true",
+            "5, true"
         })
         @DisplayName("GetSatisfyFreeEducation возвращает true для оценок >= 3")
         void testGetSatisfyFreeEducation(int grade, boolean expectedResult) {
@@ -74,10 +74,10 @@ class DifferentCreditAssessmentTest {
 
         @ParameterizedTest
         @CsvSource({
-                "2, false",
-                "3, false",
-                "4, false",
-                "5, true"
+            "2, false",
+            "3, false",
+            "4, false",
+            "5, true"
         })
         @DisplayName("GetSatisfyRaiseGrant возвращает true только для оценки 5 (наследование от DifferentAssessment)")
         void testGetSatisfyRaiseGrant(int grade, boolean expectedResult) {
@@ -87,10 +87,10 @@ class DifferentCreditAssessmentTest {
 
         @ParameterizedTest
         @CsvSource({
-                "2, false",
-                "3, false",
-                "4, true",
-                "5, true"
+            "2, false",
+            "3, false",
+            "4, true",
+            "5, true"
         })
         @DisplayName("GetSatisfyBaseGrant возвращает true для оценок >= 4 (наследование от DifferentAssessment)")
         void testGetSatisfyBaseGrant(int grade, boolean expectedResult) {
