@@ -17,7 +17,8 @@ class BinaryAssessmentTest {
         @ValueSource(booleans = {true, false})
         @DisplayName("Успешное создание объекта с валидными параметрами")
         void shouldCreateInstanceWithValidParameters(boolean resultValue) {
-            BinaryAssessment assessment = new BinaryAssessment("Физическая культура", 2, resultValue);
+            BinaryAssessment assessment
+                = new BinaryAssessment("Физическая культура", 2, resultValue);
 
             Assertions.assertEquals("Физическая культура", assessment.GetName());
             Assertions.assertEquals(2, assessment.GetSemester());
@@ -52,7 +53,8 @@ class BinaryAssessmentTest {
         @Test
         @DisplayName("Все методы удовлетворения условий возвращают true, если результат true")
         void shouldReturnTrueWhenResultIsTrue() {
-            BinaryAssessment assessment = new BinaryAssessment("Информатика", 1, true);
+            BinaryAssessment assessment
+                = new BinaryAssessment("Информатика", 1, true);
 
             Assertions.assertTrue(assessment.GetSatisfyFreeEducation());
             Assertions.assertTrue(assessment.GetSatisfyRaiseGrant());
@@ -62,7 +64,8 @@ class BinaryAssessmentTest {
         @Test
         @DisplayName("Все методы удовлетворения условий возвращают false, если результат false")
         void shouldReturnFalseWhenResultIsFalse() {
-            BinaryAssessment assessment = new BinaryAssessment("Информатика", 1, false);
+            BinaryAssessment assessment
+                = new BinaryAssessment("Информатика", 1, false);
 
             Assertions.assertFalse(assessment.GetSatisfyFreeEducation());
             Assertions.assertFalse(assessment.GetSatisfyRaiseGrant());
@@ -73,7 +76,8 @@ class BinaryAssessmentTest {
         @ValueSource(booleans = {true, false})
         @DisplayName("GetImpactDiplomaHonor всегда возвращает false независимо от результата")
         void getImpactDiplomaHonor_ShouldAlwaysReturnFalse(boolean resultValue) {
-            BinaryAssessment assessment = new BinaryAssessment("Информатика", 1, resultValue);
+            BinaryAssessment assessment
+                = new BinaryAssessment("Информатика", 1, resultValue);
 
             Assertions.assertFalse(assessment.GetImpactDiplomaHonor());
         }
