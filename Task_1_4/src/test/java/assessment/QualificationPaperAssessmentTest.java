@@ -31,7 +31,8 @@ class QualificationPaperAssessmentTest {
                     IllegalArgumentException.class,
                     () -> new QualificationPaperAssessment(-1)
             );
-            Assertions.assertTrue(exception.getMessage().contains("Argument 'grade' must is more zero"));
+            Assertions.assertTrue(exception.getMessage()
+                .contains("Argument 'grade' must is more zero"));
         }
 
         @ParameterizedTest
@@ -42,7 +43,8 @@ class QualificationPaperAssessmentTest {
                     IllegalArgumentException.class,
                     () -> new QualificationPaperAssessment(invalidGrade)
             );
-            Assertions.assertTrue(exception.getMessage().contains("Argument 'grade' must belong range [2;5]"));
+            Assertions.assertTrue(exception.getMessage()
+                .contains("Argument 'grade' must belong range [2;5]"));
         }
     }
 
@@ -76,7 +78,8 @@ class QualificationPaperAssessmentTest {
 
         @ParameterizedTest
         @ValueSource(ints = {2, 3, 4, 5})
-        @DisplayName("GetImpactDiplomaHonor всегда возвращает true (унаследовано от DifferentAssessment)")
+        @DisplayName("GetImpactDiplomaHonor всегда возвращает true" +
+            " (унаследовано от DifferentAssessment)")
         void getImpactDiplomaHonor_ShouldAlwaysReturnTrue(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
             Assertions.assertTrue(assessment.GetImpactDiplomaHonor());

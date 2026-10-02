@@ -79,7 +79,8 @@ class ExamAssessmentTest {
             "4, false",
             "5, true"
         })
-        @DisplayName("GetSatisfyRaiseGrant возвращает true только для оценки 5 (наследование от DifferentAssessment)")
+        @DisplayName("GetSatisfyRaiseGrant возвращает true только для оценки 5" +
+            " (наследование от DifferentAssessment)")
         void testGetSatisfyRaiseGrant(int grade, boolean expectedResult) {
             ExamAssessment assessment = new ExamAssessment("История", 1, grade);
             Assertions.assertEquals(expectedResult, assessment.GetSatisfyRaiseGrant());
@@ -92,14 +93,16 @@ class ExamAssessmentTest {
             "4, true",
             "5, true"
         })
-        @DisplayName("GetSatisfyBaseGrant возвращает true для оценок >= 4 (наследование от DifferentAssessment)")
+        @DisplayName("GetSatisfyBaseGrant возвращает true для оценок >= 4" +
+            " (наследование от DifferentAssessment)")
         void testGetSatisfyBaseGrant(int grade, boolean expectedResult) {
             ExamAssessment assessment = new ExamAssessment("История", 1, grade);
             Assertions.assertEquals(expectedResult, assessment.GetSatisfyBaseGrant());
         }
 
         @Test
-        @DisplayName("GetImpactDiplomaHonor всегда возвращает true (наследование от DifferentAssessment)")
+        @DisplayName("GetImpactDiplomaHonor всегда возвращает true" +
+            " (наследование от DifferentAssessment)")
         void getImpactDiplomaHonor_ShouldReturnTrue() {
             ExamAssessment assessment = new ExamAssessment("История", 1, 4);
             Assertions.assertTrue(assessment.GetImpactDiplomaHonor());
