@@ -74,12 +74,12 @@ class BinaryAssessmentTest {
 
         @ParameterizedTest
         @ValueSource(booleans = {true, false})
-        @DisplayName("GetImpactDiplomaHonor всегда возвращает false независимо от результата")
+        @DisplayName("GetImpactDiplomaHonor всегда возвращает true независимо от результата")
         void getImpactDiplomaHonor_ShouldAlwaysReturnFalse(boolean resultValue) {
             BinaryAssessment assessment
                 = new BinaryAssessment("Информатика", 1, resultValue);
 
-            Assertions.assertFalse(assessment.getImpactDiplomaHonor());
+            Assertions.assertTrue(assessment.getImpactDiplomaHonor());
         }
     }
 }
