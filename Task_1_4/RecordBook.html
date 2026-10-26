@@ -262,6 +262,8 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>newGrade</code> - new result assessment</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - newGrade is null pointer</dd>
 </dl>
 </section>
 </li>
@@ -270,6 +272,10 @@ loadScripts(document, 'script');</script>
 <h3>transferToFreeEducation</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">transferToFreeEducation</span>()</div>
 <div class="block">Check precondition transfer to state-funded education and carry transfer.</div>
+<dl class="notes">
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - grades not satisfy of transfer to free education</dd>
+</dl>
 </section>
 </li>
 </ul>
