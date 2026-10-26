@@ -227,6 +227,17 @@ class RecordBookTest {
 
             Assertions.assertFalse(recordBook.getStatusDiplomaHonor());
         }
+
+        @Test
+        @DisplayName("Возвращает false, если есть несданный бинарный зачёт")
+        void shouldReturnFalseWhenAnyBinaryAssessmentHaveNegativeResult() {
+            RecordBook recordBook = new RecordBook(1, true);
+            recordBook.addAssessment(new ExamAssessment("Предмет 2", 1, 5));
+            recordBook.addAssessment(new QualificationPaperAssessment(5));
+            recordBook.addAssessment(new BinaryAssessment("Предмет 3", 1,
+                false));
+            Assertions.assertFalse(recordBook.getStatusDiplomaHonor());
+        }
     }
 
     @Nested

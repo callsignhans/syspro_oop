@@ -57,7 +57,7 @@ class QualificationPaperAssessmentTest {
         @DisplayName("GetSatisfyFreeEducation всегда возвращает false независимо от оценки")
         void getSatisfyFreeEducation_ShouldAlwaysReturnFalse(int grade) {
             QualificationPaperAssessment assessment = new QualificationPaperAssessment(grade);
-            Assertions.assertFalse(assessment.getSatisfyFreeEducation());
+            Assertions.assertTrue(assessment.getSatisfyFreeEducation());
         }
 
         @ParameterizedTest

@@ -1,4 +1,5 @@
 import assessment.Assessment;
+import assessment.BinaryAssessment;
 import assessment.DifferentAssessment;
 import assessment.QualificationPaperAssessment;
 
@@ -47,6 +48,8 @@ public class RecordBook {
         return freeEducationStatus;
     }
 
+
+
     /**
      * Method define possible transfer to state-funded education student in last semester.
      * @return if student study of state-funded education or satisfy precondition transfer
@@ -75,8 +78,13 @@ public class RecordBook {
             .mapToInt(obj -> ((QualificationPaperAssessment) obj).getGrade())
             .allMatch(obj -> obj == 5);
         var haveNotThree = assessments.stream().filter(Assessment::getImpactDiplomaHonor)
+            .filter(obj -> obj instanceof DifferentAssessment)
             .allMatch(obj -> ((DifferentAssessment) obj).getGrade() > 3);
-        return satisfyMediumGrade && gradeOfQualificationPaper && haveNotThree;
+        var haveNotNegativeBinary = assessments.stream().filter(Assessment::getImpactDiplomaHonor)
+            .filter(obj -> obj instanceof BinaryAssessment)
+            .allMatch(obj -> ((BinaryAssessment)obj).getResult());
+        return satisfyMediumGrade && gradeOfQualificationPaper && haveNotThree &&
+            haveNotNegativeBinary;
     }
 
     /**
@@ -102,6 +110,7 @@ public class RecordBook {
     /**
      * Add in record book new result of assessment.
      * @param newGrade new result assessment
+     * @throws NullPointerException newGrade is null pointer
      */
     public void addAssessment(Assessment newGrade) {
         if (newGrade == null) {
@@ -112,6 +121,7 @@ public class RecordBook {
 
     /**
      * Check precondition transfer to state-funded education and carry transfer.
+     * @throws IllegalStateException grades not satisfy of transfer to free education
      */
     public void transferToFreeEducation() {
         if (getPossibleTransferToFreeEducation()) {

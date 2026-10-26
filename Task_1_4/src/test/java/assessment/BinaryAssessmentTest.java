@@ -22,7 +22,7 @@ class BinaryAssessmentTest {
 
             Assertions.assertEquals("Физическая культура", assessment.getName());
             Assertions.assertEquals(2, assessment.getSemester());
-            Assertions.assertEquals(resultValue, assessment.result);
+            Assertions.assertEquals(resultValue, assessment.getResult());
         }
 
         @Test

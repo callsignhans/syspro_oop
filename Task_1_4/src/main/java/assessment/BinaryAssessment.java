@@ -5,7 +5,7 @@ package assessment;
  */
 public final class BinaryAssessment extends BaseAssessment {
 
-    boolean result;
+    private boolean result;
 
     public BinaryAssessment(String name, int semester, boolean result) {
         super(name, semester);
@@ -14,7 +14,7 @@ public final class BinaryAssessment extends BaseAssessment {
 
     @Override
     public boolean getImpactDiplomaHonor() {
-        return false;
+        return true;
     }
 
     @Override
@@ -32,4 +32,7 @@ public final class BinaryAssessment extends BaseAssessment {
         return result;
     }
 
+   public boolean getResult() {
+        return result;
+   }
 }

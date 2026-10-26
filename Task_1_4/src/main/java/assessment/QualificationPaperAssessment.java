@@ -12,7 +12,7 @@ public final class QualificationPaperAssessment extends DifferentAssessment {
 
     @Override
     public boolean getSatisfyFreeEducation() {
-        return false;
+        return true;
     }
 
     @Override
